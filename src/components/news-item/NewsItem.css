@@ -1,0 +1,23 @@
+.article {
+    margin-top: 20px;
+}
+
+.articleTitle {
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+.articleContent {
+    display: flex;
+    margin-top: 10px;
+}
+
+
+
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+

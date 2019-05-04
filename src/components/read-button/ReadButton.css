@@ -1,0 +1,13 @@
+.readButton {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+
+    font-size: 15px;
+    color: white;
+    background-color: dodgerblue;
+}
+
+.readButton:hover {
+    background-color: #31b9fe;
+}

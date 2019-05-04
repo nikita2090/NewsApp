@@ -1,0 +1,18 @@
+.appTitlesWrap{
+    text-align: center;
+}
+
+.appTitle{
+    font-size: 50px;
+    margin-bottom: 0;
+}
+
+.appSubtitle{
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.appSubtitle a{
+    text-decoration: none;
+    color: dodgerblue;
+}
