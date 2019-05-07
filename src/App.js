@@ -5,7 +5,10 @@ import './App.css';
 import Title from './components/title/Title';
 import SearchForm from './components/search-form/SearchForm';
 import NewsList from './components/news-list/NewsList';
+import Select from "./components/select/Select";
 
+import countries from './sources/countries';
+import categories from './sources/categories';
 
 const BASE_PATH = 'https://newsapi.org/v2';
 const ALL_NEWS = '/everything?';
@@ -60,14 +63,21 @@ class App extends Component {
     handleInputChange = ({target: {value}}) => {
         this.setState({
             searchQuery: value
-        })
+        });
     };
 
-    handleSelectChange = ({target: {value}}) => {
+    handleSelectChange = ({target}) => {
+        const name = target.name;
+        const {value} = target;
+
         this.setState({
-            category: value
-        })
+            [name]: value
+        }, () =>{
+            this.fetchData('',true)
+        });
     };
+
+
 
     handleBtnClick = (e) => {
         e.preventDefault();
@@ -82,14 +92,26 @@ class App extends Component {
 
 
     render() {
-        const {searchQuery, news} = this.state;
+        const {searchQuery, news, country, category} = this.state;
         return (
             <div className="wrapper">
                 <Title header="News"/>
+                <div>
+                    <p>Choose country and news category:</p>
+                    <Select arr={countries}
+                            handleSelectChange={this.handleSelectChange}
+                            name='country'
+                            selected={country}
+                    />
+                    <Select arr={categories}
+                            handleSelectChange={this.handleSelectChange}
+                            name='category'
+                            selected={category}
+                    />
+                </div>
                 <SearchForm value={searchQuery}
-                      handleInputChange={this.handleInputChange}
-                      handleBtnClick={this.handleBtnClick}
-                />
+                            handleInputChange={this.handleInputChange}
+                            handleBtnClick={this.handleBtnClick}/>
                 <NewsList news={news}/>
             </div>
         )

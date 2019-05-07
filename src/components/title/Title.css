@@ -1,10 +1,12 @@
 .appTitlesWrap{
     text-align: center;
+    margin-top: 24px;
 }
 
 .appTitle{
     font-size: 50px;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .appSubtitle{
