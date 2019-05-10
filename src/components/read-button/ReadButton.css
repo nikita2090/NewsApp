@@ -1,13 +1,29 @@
-.readButton {
-    display: inline-block;
-    text-decoration: none;
-    padding: 5px 10px 5px 10px;
+@media screen and (min-width: 300px) {
+    .readButton {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        padding: 6px 10px 6px 10px;
 
-    font-size: 15px;
-    color: white;
-    background-color: dodgerblue;
+        margin: 15px 0;
+        font-size: 16px;
+        color: white;
+        background-color: dodgerblue;
+    }
+
+    .readButton:hover {
+        color: white;
+        text-decoration: none;
+        background-color: deepskyblue;
+    }
 }
 
-.readButton:hover {
-    background-color: deepskyblue;
+
+@media screen and (min-width: 768px) {
+    .readButton {
+        width: inherit;
+        margin: 0;
+    }
 }
+

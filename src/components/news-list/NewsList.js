@@ -5,21 +5,25 @@ import './NewsList.css';
 import NewsItem from '../news-item/NewsItem';
 
 
-const NewsList = ({news}) => (
-    <main>
+const NewsList = ({news, className}) => (
+    <main className={className}>
         {news.map( article => (
-            <NewsItem article={article}/>
+            <NewsItem article={article}
+                      className="col-12"
+                      key={article.publishedAt}/>
         ))}
     </main>
 );
 
 
 NewsList.propTypes = {
-    news: PropTypes.array
+    news: PropTypes.array,
+    className: PropTypes.string
 };
 
 NewsList.defaultProps = {
-    news: []
+    news: [],
+    className: ''
 };
 
 export default NewsList;

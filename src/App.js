@@ -5,10 +5,8 @@ import './App.css';
 import Title from './components/title/Title';
 import SearchForm from './components/search-form/SearchForm';
 import NewsList from './components/news-list/NewsList';
-import Select from "./components/select/Select";
-
-import countries from './sources/countries';
-import categories from './sources/categories';
+import SelectForm from "./components/select-form/SelectForm";
+import Row from "./components/row/Row";
 
 const BASE_PATH = 'https://newsapi.org/v2';
 const ALL_NEWS = '/everything?';
@@ -28,15 +26,17 @@ class App extends Component {
     };
 
     componentDidMount() {
-        const {searchQuery, country} = this.state;
-        this.fetchData(searchQuery, country, true);
+        const {searchQuery} = this.state;
+        this.fetchData(searchQuery).catch( err => {
+            alert(err);
+        });
     }
 
-    fetchData = async (searchQuery, topNews) => {
+    fetchData = async (searchQuery) => {
         let news;
         let countryURL = '';
         let categoryURL = '';
-        if (topNews) {
+        if (!searchQuery) {
             news = TOP_NEWS;
             const {country, category} = this.state;
             countryURL = `&${COUNTRY}${country}`;
@@ -46,7 +46,6 @@ class App extends Component {
         }
 
         let url = `${BASE_PATH}${news}${QUERY}${searchQuery}${countryURL}${categoryURL}`;
-        console.log(url);
 
         let res = await fetch(url, {
             headers: {
@@ -72,51 +71,48 @@ class App extends Component {
 
         this.setState({
             [name]: value
-        }, () =>{
-            this.fetchData('',true)
+        }, () => {
+            this.fetchData('').catch(err => {
+                alert(err)
+            });
         });
     };
-
-
 
     handleBtnClick = (e) => {
         e.preventDefault();
         const {searchQuery} = this.state;
-        let topNews = false;
-        if (searchQuery === '') {
-            topNews = true
-        }
-
-        this.fetchData(searchQuery, topNews);
+        this.fetchData(searchQuery).catch(err => {
+            alert(err)
+        });
     };
 
 
     render() {
         const {searchQuery, news, country, category} = this.state;
         return (
-            <div className="wrapper">
-                <Title header="News"/>
-                <div>
-                    <p>Choose country and news category:</p>
-                    <Select arr={countries}
-                            handleSelectChange={this.handleSelectChange}
-                            name='country'
-                            selected={country}
-                    />
-                    <Select arr={categories}
-                            handleSelectChange={this.handleSelectChange}
-                            name='category'
-                            selected={category}
-                    />
-                </div>
-                <SearchForm value={searchQuery}
-                            handleInputChange={this.handleInputChange}
-                            handleBtnClick={this.handleBtnClick}/>
-                <NewsList news={news}/>
+            <div className="container">
+                <Row>
+                    <Title header="News"
+                           className="col-12"/>
+                </Row>
+
+                <Row>
+                    <SelectForm className="col-12 col-lg-4 col-xl-3"
+                                handleSelectChange={this.handleSelectChange}
+                                selectedCountry={country}
+                                selectedCategory={category}/>
+
+                    <SearchForm className="col-12 col-lg-8 col-xl-9"
+                                value={searchQuery}
+                                handleInputChange={this.handleInputChange}
+                                handleBtnClick={this.handleBtnClick}/>
+                </Row>
+
+                <NewsList className="row"
+                          news={news}/>
             </div>
         )
     }
 }
-
 
 export default App;

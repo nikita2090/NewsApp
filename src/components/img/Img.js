@@ -1,26 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './Img.css';
 
+const Img = ({urlToImage, className}) => {
+    const classes = classNames(
+        className,
+        'imgWrapper'
+    );
 
-const Img = ({urlToImage, width}) => (
-    <div className="imgWrapper">
-        <img src={urlToImage}
-             width={width}
-             alt=""/>
-    </div>
-);
+    return (
+        <div className={classes}>
+            <img src={urlToImage ? urlToImage : './News.png'}
+                 width='100%'
+                 alt=""/>
+        </div>
+    )
+};
 
 
 Img.propTypes = {
     urlToImage: PropTypes.string,
-    width: PropTypes.string
+    className: PropTypes.string
 };
 
 Img.defaultProps = {
     urlToImage: '',
-    width: '200'
+    className: ''
 };
 
 export default Img;
