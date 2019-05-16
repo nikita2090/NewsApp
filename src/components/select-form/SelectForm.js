@@ -31,15 +31,17 @@ const SearchForm = ({selectedCountry, selectedCategory, handleSelectChange, clas
 
 
 SearchForm.propTypes = {
-    value: PropTypes.string,
-    handleInputChange: PropTypes.func,
-    handleBtnClick: PropTypes.func
+    selectedCountry: PropTypes.string,
+    selectedCategory: PropTypes.string,
+    handleSelectChange: PropTypes.func,
+    className: PropTypes.string,
 };
 
 SearchForm.defaultProps = {
-    value: '',
-    handleInputChange:()=>{},
-    handleBtnClick: ()=>{}
+    selectedCountry: 'USA',
+    selectedCategory: 'general',
+    handleSelectChange: () => {},
+    className: '',
 };
 
 export default SearchForm;

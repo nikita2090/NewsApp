@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import './SearchForm.css';
 
 
-const SearchForm = ({value, handleInputChange, handleBtnClick, className}) => {
+const SearchForm = ({value, handleInputChange, handleSearchBtnClick, className}) => {
     const classes = classNames(
         'searchForm',
         className
@@ -18,7 +18,7 @@ const SearchForm = ({value, handleInputChange, handleBtnClick, className}) => {
                    value={value}
                    onChange={handleInputChange}/>
             <button className="searchButton"
-                    onClick={handleBtnClick}>OK</button>
+                    onClick={handleSearchBtnClick}>OK</button>
         </form>
     );
 };
@@ -34,7 +34,8 @@ SearchForm.propTypes = {
 SearchForm.defaultProps = {
     value: '',
     handleInputChange:()=>{},
-    handleBtnClick: ()=>{}
+    handleBtnClick: ()=>{},
+    className: ''
 };
 
 export default SearchForm;

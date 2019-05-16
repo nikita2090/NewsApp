@@ -1,0 +1,31 @@
+.paginationForm {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding-top: 16px;
+    padding-bottom: 30px;
+}
+
+.pageSizesSelectWrapper {
+    text-align: center;
+}
+
+.arrowBtn {
+    height: 26px;
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+}
+
+.arrowBtn:hover {
+    background-color: deepskyblue;
+    outline: none;
+}
+
+.arrowBtn:disabled {
+     background-color: lightgrey;
+     color: white;
+ }
+
+
+

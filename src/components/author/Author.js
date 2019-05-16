@@ -20,11 +20,13 @@ const Author = ({author, source}) => {
 
 
 Author.propTypes = {
-    date: PropTypes.string,
+    author: PropTypes.string,
+    source: PropTypes.string,
 };
 
 Author.defaultProps = {
-    date: ''
+    author: '',
+    source: '',
 };
 
 export default Author;

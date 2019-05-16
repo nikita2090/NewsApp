@@ -10,7 +10,7 @@ const NewsList = ({news, className}) => (
         {news.map( article => (
             <NewsItem article={article}
                       className="col-12"
-                      key={article.publishedAt}/>
+                      key={article.title}/>
         ))}
     </main>
 );

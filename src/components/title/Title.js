@@ -19,11 +19,13 @@ const Title = ({header, className}) => {
 };
 
 Title.propTypes = {
-    header: PropTypes.string
+    header: PropTypes.string,
+    className: PropTypes.string
 };
 
 Title.defaultProps = {
-    header: 'Simple header'
+    header: 'Simple header',
+    className: ''
 };
 
 export default Title;
