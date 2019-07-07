@@ -14,8 +14,14 @@
     background-color: dodgerblue;
     color: white;
     border: none;
+    transition: background-color .3s;
 }
 
 .searchButton:hover {
     background-color: deepskyblue;
+}
+
+.legendSearch {
+    font-size: 18px;
+    text-decoration: underline dodgerblue;
 }

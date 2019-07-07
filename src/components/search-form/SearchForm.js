@@ -7,18 +7,20 @@ import './SearchForm.css';
 
 const SearchForm = ({value, handleInputChange, handleSearchBtnClick, className}) => {
     const classes = classNames(
-        'searchForm',
         className
     );
 
     return(
         <form className={classes}>
-            <input className="searchInput"
-                   placeholder="Search..."
-                   value={value}
-                   onChange={handleInputChange}/>
-            <button className="searchButton"
-                    onClick={handleSearchBtnClick}>OK</button>
+            <legend className="legendSearch">Search in ALL news:</legend>
+            <div className="searchForm">
+                <input className="searchInput"
+                       placeholder="Search..."
+                       value={value}
+                       onChange={handleInputChange}/>
+                <button className="searchButton"
+                        onClick={handleSearchBtnClick}>OK</button>
+            </div>
         </form>
     );
 };

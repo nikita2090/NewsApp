@@ -16,6 +16,7 @@ const SearchForm = ({selectedCountry, selectedCategory, handleSelectChange, clas
 
     return(
         <form className={classes}>
+            <legend className="legendSelect">Search in HOT news:</legend>
             <Select name='country'
                     arr={countries}
                     selected={selectedCountry}

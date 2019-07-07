@@ -14,13 +14,7 @@ import calculateLastPage from './functions/calculateLastPage';
 const BASE_PATH = 'https://newsapi.org/v2';
 const ALL_NEWS = '/everything?';
 const TOP_NEWS = '/top-headlines?';
-const QUERY = 'q=';
-const COUNTRY = 'country=';
-const CATEGORY = 'category=';
-const PAGE = 'page=';
-const PAGESIZE = 'pageSize=';
 const KEY = '47387a80918944f6baaa6e32fc95233d';
-
 
 class App extends Component {
     state = {
@@ -35,47 +29,52 @@ class App extends Component {
 
     componentDidMount() {
         const {searchQuery, pageSize, page} = this.state;
-        this.fetchData(searchQuery, pageSize, page).catch(err => {
-            alert(err);
-        });
+        this.fetchData(searchQuery, pageSize, page);
     }
 
-    fetchData = async (searchQuery, pageSize, page) => {
-        let news;
-        let countryURL = '';
-        let categoryURL = '';
-
-        let pageURL = `&${PAGE}${page}`;
-        let pageSizeURL = `&${PAGESIZE}${pageSize}`;
+    _calculateURL = (searchQuery, pageSize, page) => {
+        let url = new URL(`${BASE_PATH}${ALL_NEWS}`);
 
         if (!searchQuery) {
-            news = TOP_NEWS;
-            const {country, category,} = this.state;
-            countryURL = `&${COUNTRY}${country}`;
-            categoryURL = `&${CATEGORY}${category}`;
-        } else {
-            news = ALL_NEWS;
+            url = new URL(`${BASE_PATH}${TOP_NEWS}`);
+
+            const {country, category} = this.state;
+            url.searchParams.set('country', country);
+            url.searchParams.set('category', category);
         }
+        url.searchParams.set('q', searchQuery);
+        url.searchParams.set('pageSize', pageSize);
+        url.searchParams.set('page', page);
 
-        let url = `${BASE_PATH}${news}${QUERY}${searchQuery}${countryURL}${categoryURL}${pageSizeURL}&${pageURL}`;
+        return url;
+    };
 
-        let res = await fetch(url, {
-            headers: {
-                Authorization: KEY
-            }
-        });
-        let resJson = await res.json();
+    fetchData = async (searchQuery, pageSize, page) => {
+        try {
+            let url = this._calculateURL(searchQuery, pageSize, page);
 
-        console.log(resJson.totalResults);
-
-        if (resJson.status === 'ok') {
-            this.setState({
-                totalResults: resJson.totalResults,
-                news: resJson.articles
+            let res = await fetch(url, {
+                headers: {
+                    Authorization: KEY
+                }
             });
-        } else {
-            alert(resJson.message);
+
+            if (!res.ok) alert("HTTP-Error: " + res.status);
+
+            let resJson = await res.json();
+
+            if (resJson.status === 'ok') {
+                this.setState({
+                    totalResults: resJson.totalResults,
+                    news: resJson.articles
+                });
+            } else {
+                alert(resJson.message);
+            }
+        } catch (err) {
+            alert(err);
         }
+
     };
 
     handleInputChange = ({target: {value}}) => {
@@ -87,11 +86,12 @@ class App extends Component {
 
     handleSelectChange = ({target}) => {
         const name = target.name;
-        const {value} = target;
+        let {value} = target;
 
-        let {searchQuery} = this.state;
-        if (name !== 'pageSize') {
-            searchQuery = '';
+        let searchQuery = '';
+        if (name === 'pageSize') {
+            searchQuery = this.state.searchQuery;
+            value = +value;
         }
 
         this.setState({
@@ -100,9 +100,7 @@ class App extends Component {
             searchQuery: searchQuery
         }, () => {
             const {pageSize} = this.state;
-            this.fetchData(searchQuery, pageSize, 1).catch(err => {
-                alert(err)
-            });
+            this.fetchData(searchQuery, pageSize, 1);
         });
     };
 
@@ -110,9 +108,7 @@ class App extends Component {
         e.preventDefault();
         const {searchQuery, pageSize} = this.state;
 
-        this.fetchData(searchQuery, pageSize, 1).catch(err => {
-            alert(err)
-        });
+        this.fetchData(searchQuery, pageSize, 1);
     };
 
 

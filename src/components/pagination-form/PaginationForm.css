@@ -15,11 +15,13 @@
     background-color: dodgerblue;
     border: none;
     color: white;
+    transition: background-color .4s;
 }
 
 .arrowBtn:hover {
     background-color: deepskyblue;
     outline: none;
+
 }
 
 .arrowBtn:disabled {
