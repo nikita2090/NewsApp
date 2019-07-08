@@ -17,19 +17,44 @@ const TOP_NEWS = '/top-headlines?';
 const KEY = '47387a80918944f6baaa6e32fc95233d';
 
 class App extends Component {
-    state = {
-        searchQuery: '',
-        totalResults: 0,
-        news: [],
-        country: 'us',
-        category: 'general',
-        pageSize: 10,
-        page: 1
-    };
+    constructor(props){
+        super(props);
+
+        let country = 'us';
+        let category = 'general';
+        let pageSize = 10;
+
+        if (localStorage.options) {
+            ({country, category, pageSize} = this._loadUserOptions());
+        }
+
+        this.state = {
+            searchQuery: '',
+            totalResults: 0,
+            news: [],
+            country: country,
+            category: category,
+            pageSize: pageSize,
+            page: 1
+        };
+    }
 
     componentDidMount() {
         const {searchQuery, pageSize, page} = this.state;
         this.fetchData(searchQuery, pageSize, page);
+    }
+
+    _saveUserOptions(name, value) {
+        let savedOptions = {};
+        if (localStorage.options) {
+            savedOptions = this._loadUserOptions();
+        }
+        savedOptions[name] = value;
+        localStorage.setItem('options', JSON.stringify(savedOptions));
+    }
+
+    _loadUserOptions() {
+        return JSON.parse(localStorage.getItem('options'))
     }
 
     _calculateURL = (searchQuery, pageSize, page) => {
@@ -93,6 +118,8 @@ class App extends Component {
             searchQuery = this.state.searchQuery;
             value = +value;
         }
+
+        this._saveUserOptions(name, value);
 
         this.setState({
             [name]: value,
