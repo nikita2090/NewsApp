@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Title from './components/title/Title';
+import PageSize from './components/page-size/PageSize';
 import PaginationForm from "./components/pagination-form/PaginationForm";
 import SearchForm from './components/search-form/SearchForm';
 import SelectForm from "./components/select-form/SelectForm";
@@ -10,6 +11,7 @@ import NewsList from './components/news-list/NewsList';
 import Row from "./components/row/Row";
 
 import calculateLastPage from './functions/calculateLastPage';
+
 
 const BASE_PATH = 'https://newsapi.org/v2';
 const ALL_NEWS = '/everything?';
@@ -40,8 +42,11 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const {searchQuery, pageSize, page} = this.state;
-        this.fetchData(searchQuery, pageSize, page);
+        this.fetchData();
+    }
+
+    _loadUserOptions() {
+        return JSON.parse(localStorage.getItem('options'))
     }
 
     _saveUserOptions(name, value) {
@@ -53,20 +58,18 @@ class App extends Component {
         localStorage.setItem('options', JSON.stringify(savedOptions));
     }
 
-    _loadUserOptions() {
-        return JSON.parse(localStorage.getItem('options'))
-    }
-
-    _calculateURL = (searchQuery, pageSize, page) => {
+    _calculateURL = () => {
         let url = new URL(`${BASE_PATH}${ALL_NEWS}`);
+        const {searchQuery, pageSize, page} = this.state;
 
         if (!searchQuery) {
             url = new URL(`${BASE_PATH}${TOP_NEWS}`);
-
             const {country, category} = this.state;
+
             url.searchParams.set('country', country);
             url.searchParams.set('category', category);
         }
+
         url.searchParams.set('q', searchQuery);
         url.searchParams.set('pageSize', pageSize);
         url.searchParams.set('page', page);
@@ -74,9 +77,9 @@ class App extends Component {
         return url;
     };
 
-    fetchData = async (searchQuery, pageSize, page) => {
+    fetchData = async () => {
         try {
-            let url = this._calculateURL(searchQuery, pageSize, page);
+            let url = this._calculateURL();
 
             let res = await fetch(url, {
                 headers: {
@@ -125,44 +128,42 @@ class App extends Component {
             [name]: value,
             page: 1,
             searchQuery: searchQuery
-        }, () => {
-            const {pageSize} = this.state;
-            this.fetchData(searchQuery, pageSize, 1);
-        });
+        }, this.fetchData);
     };
 
     handleSearchBtnClick = (e) => {
         e.preventDefault();
-        const {searchQuery, pageSize} = this.state;
-
-        this.fetchData(searchQuery, pageSize, 1);
+        this.setState({
+            page: 1
+        }, this.fetchData);
     };
 
 
     handlePageChange = (e) => {
         e.preventDefault();
         const name = e.target.name;
-        const {page} = this.state;
-        switch (name) {
-            case 'prev':
-                this.updatePage(page - 1);
-                break;
-            case 'next':
-                this.updatePage(page + 1);
-                break;
-            default:
-                return null;
+
+        if(!isNaN(name)) {
+            this.updatePage(+name);
+        } else {
+            const {page} = this.state;
+            switch (name) {
+                case 'prev':
+                    this.updatePage(page - 1);
+                    break;
+                case 'next':
+                    this.updatePage(page + 1);
+                    break;
+                default:
+                    return null;
+            }
         }
     };
 
     updatePage = (number) => {
-        const {searchQuery, pageSize} = this.state;
         this.setState({
             page: number
-        }, () => {
-            const {page} = this.state;
-            this.fetchData(searchQuery, pageSize, page);
-        });
+        }, this.fetchData);
     };
 
     render() {
@@ -172,6 +173,12 @@ class App extends Component {
                 <Row>
                     <Title header="News"
                            className="col-12"/>
+                </Row>
+
+                <Row>
+                    <PageSize className="col-12"
+                              selectedPageSize={pageSize}
+                              handleSelectChange={this.handleSelectChange}/>
                 </Row>
 
                 <Row>
@@ -199,6 +206,12 @@ class App extends Component {
                           news={news}/>
 
                 <Row>
+                    <PageSize className="col-12"
+                              selectedPageSize={pageSize}
+                              handleSelectChange={this.handleSelectChange}/>
+                </Row>
+
+                <Row>
                     <PaginationForm className="col-12"
                                     handleSelectChange={this.handleSelectChange}
                                     selectedPageSize={pageSize}
@@ -210,7 +223,6 @@ class App extends Component {
                 <Row>
                     <i className="footer col-12">© nikita2090, 2019</i>
                 </Row>
-
             </div>
         )
     }

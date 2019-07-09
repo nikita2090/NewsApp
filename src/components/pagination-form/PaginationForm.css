@@ -1,33 +1,45 @@
-.paginationForm {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-    padding-top: 16px;
-    padding-bottom: 30px;
+@media screen and (min-width: 300px) {
+    .paginationForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding-top: 16px;
+        padding-bottom: 30px;
+    }
+
+    .arrowBtn {
+        display: none;
+    }
 }
 
-.pageSizesSelectWrapper {
-    text-align: center;
+@media screen and (min-width: 768px) {
+    .paginationForm {
+        justify-content: space-between;
+    }
+    .arrowBtn {
+        display: block;
+        height: 26px;
+        background-color: dodgerblue;
+        border: none;
+        color: white;
+    }
+
+    .arrowBtn:hover {
+        background-color: deepskyblue;
+        outline: none;
+    }
+
+    .arrowBtn:disabled {
+        background-color: lightgrey;
+        color: white;
+    }
 }
 
-.arrowBtn {
-    height: 26px;
-    background-color: dodgerblue;
-    border: none;
-    color: white;
-    transition: background-color .4s;
-}
 
-.arrowBtn:hover {
-    background-color: deepskyblue;
-    outline: none;
 
-}
 
-.arrowBtn:disabled {
-     background-color: lightgrey;
-     color: white;
- }
+
 
 
 

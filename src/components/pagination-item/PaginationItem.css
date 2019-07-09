@@ -1,0 +1,38 @@
+@media screen and (min-width: 300px) {
+    .paginationItem {
+        width: 30px;
+        height: 30px;
+        border-radius: 14px;
+        border: none;
+        outline: none;
+        background: transparent;
+        transition: all .4s;
+        margin: 0 1px;
+    }
+
+    .paginationItem:hover {
+        background: deepskyblue;
+    }
+
+    .paginationItem:focus {
+        outline: none;
+    }
+
+    .itemSelected {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .itemSelected:hover {
+        background-color: dodgerblue;
+        color: white;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .paginationItem {
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+    }
+}

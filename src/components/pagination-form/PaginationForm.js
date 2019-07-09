@@ -3,40 +3,36 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './PaginationForm.css';
-import Select from "../select/Select";
-import pageSizes from '../../sources/pageSizes';
+import '../pagination/Pagination';
+import Pagination from "../pagination/Pagination";
 
 
-const PaginationForm = ({selectedPageSize, handleSelectChange, className, handlePageChange, page, lastPage}) => {
+const PaginationForm = ({handlePageChange, page, lastPage, className}) => {
     const classes = classNames(
         'paginationForm',
         'row',
         className
     );
 
-    return(
+    return (
         <form className={classes}>
             <button name="prev"
-                    className="arrowBtn col-2 col-md-1"
+                    className="arrowBtn col-1"
                     onClick={handlePageChange}
                     disabled={page === 1}>
-                {'<<'}
+                {'<'}
             </button>
 
-            <div className="pageSizesSelectWrapper col-8 col-md-6 col-lg-4 col-xl-3">
-                <span>News per page: </span>
-                <Select name='pageSize'
-                        style={{width: '50px'}}
-                        arr={pageSizes}
-                        selected={selectedPageSize}
-                        handleSelectChange={handleSelectChange}/>
-            </div>
+            <Pagination className="col-22 col-md-24"
+                        handlePageChange={handlePageChange}
+                        page={page}
+                        lastPage={lastPage}/>
 
             <button name="next"
-                    className="arrowBtn col-2 col-md-1"
+                    className="arrowBtn col-1"
                     onClick={handlePageChange}
                     disabled={page === lastPage}>
-                {'>>'}
+                {'>'}
             </button>
         </form>
     );
@@ -44,8 +40,6 @@ const PaginationForm = ({selectedPageSize, handleSelectChange, className, handle
 
 
 PaginationForm.propTypes = {
-    selectedPageSize: PropTypes.number,
-    handleSelectChange: PropTypes.func,
     className: PropTypes.string,
     handlePageChange: PropTypes.func,
     page: PropTypes.number,
@@ -53,10 +47,9 @@ PaginationForm.propTypes = {
 };
 
 PaginationForm.defaultProps = {
-    selectedPageSize: 10,
-    handleSelectChange: () => {},
     className: '',
-    handlePageChange: () => {},
+    handlePageChange: () => {
+    },
     page: 1,
     lastPage: 1,
 };
