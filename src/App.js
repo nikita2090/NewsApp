@@ -19,7 +19,7 @@ const TOP_NEWS = '/top-headlines?';
 const KEY = '47387a80918944f6baaa6e32fc95233d';
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         let country = 'us';
@@ -39,6 +39,9 @@ class App extends Component {
             pageSize: pageSize,
             page: 1
         };
+
+        this.touchStart = null;
+        this.SENSITIVITY = 55;
     }
 
     componentDidMount() {
@@ -143,7 +146,7 @@ class App extends Component {
         e.preventDefault();
         const name = e.target.name;
 
-        if(!isNaN(name)) {
+        if (!isNaN(name)) {
             this.updatePage(+name);
         } else {
             const {page} = this.state;
@@ -166,10 +169,30 @@ class App extends Component {
         }, this.fetchData);
     };
 
+    onTouchStart = (e) => {
+        this.touchStart = e.changedTouches[0].clientX;
+    };
+
+    onTouchEnd = (e) => {
+        const touchEnd = e.changedTouches[0].clientX;
+        let dif = touchEnd - this.touchStart;
+
+        const {page, totalResults, pageSize} = this.state;
+        const lastPage = calculateLastPage(totalResults, pageSize);
+
+        if (dif < -this.SENSITIVITY && lastPage !== page) {
+            this.updatePage(page + 1);
+        } else if (dif > this.SENSITIVITY && page !== 1) {
+            this.updatePage(page - 1);
+        }
+    };
+
     render() {
         const {searchQuery, totalResults, news, country, category, pageSize, page} = this.state;
         return (
-            <div className="container">
+            <div className="container"
+                 onTouchStart={this.onTouchStart}
+                 onTouchEnd={this.onTouchEnd}>
                 <Row>
                     <Title header="News"
                            className="col-12"/>
