@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './NewsItem.css';
+
 import ReadButton from "../read-button/ReadButton";
 import Img from "../img/Img";
 import DateComp from "../date/DateComp";
 import Author from "../author/Author";
 import Row from "../row/Row";
-
 
 
 const NewsItem = ({article: {title, description, url, urlToImage, publishedAt, author, source}, className}) => {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames'
 
 import './Pagination.css';
+
 import PaginationItem from '../pagination-item/PaginationItem';
 
 

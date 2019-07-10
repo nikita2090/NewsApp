@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './PaginationForm.css';
-import '../pagination/Pagination';
+
+import Row from "../row/Row";
 import Pagination from "../pagination/Pagination";
 
 
@@ -15,26 +16,28 @@ const PaginationForm = ({handlePageChange, page, lastPage, className}) => {
     );
 
     return (
-        <form className={classes}>
-            <button name="prev"
-                    className="arrowBtn col-1"
-                    onClick={handlePageChange}
-                    disabled={page === 1}>
-                {'<'}
-            </button>
+        <Row>
+            <form className={classes}>
+                <button name="prev"
+                        className="arrowBtn col-1"
+                        onClick={handlePageChange}
+                        disabled={page === 1}>
+                    {'<'}
+                </button>
 
-            <Pagination className="col-22 col-md-24"
-                        handlePageChange={handlePageChange}
-                        page={page}
-                        lastPage={lastPage}/>
+                <Pagination className="col-22 col-md-24"
+                            handlePageChange={handlePageChange}
+                            page={page}
+                            lastPage={lastPage}/>
 
-            <button name="next"
-                    className="arrowBtn col-1"
-                    onClick={handlePageChange}
-                    disabled={page === lastPage}>
-                {'>'}
-            </button>
-        </form>
+                <button name="next"
+                        className="arrowBtn col-1"
+                        onClick={handlePageChange}
+                        disabled={page === lastPage}>
+                    {'>'}
+                </button>
+            </form>
+        </Row>
     );
 };
 

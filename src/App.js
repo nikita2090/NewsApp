@@ -5,10 +5,10 @@ import './App.css';
 import Title from './components/title/Title';
 import PageSize from './components/page-size/PageSize';
 import PaginationForm from "./components/pagination-form/PaginationForm";
-import SearchForm from './components/search-form/SearchForm';
-import SelectForm from "./components/select-form/SelectForm";
+import Form from "./components/form/Form";
+import Preloader from "./components/preloader/Preloader";
 import NewsList from './components/news-list/NewsList';
-import Row from "./components/row/Row";
+import Footer from './components/footer/Footer';
 
 import calculateLastPage from './functions/calculateLastPage';
 
@@ -17,6 +17,7 @@ const BASE_PATH = 'https://newsapi.org/v2';
 const ALL_NEWS = '/everything?';
 const TOP_NEWS = '/top-headlines?';
 const KEY = '47387a80918944f6baaa6e32fc95233d';
+
 
 class App extends Component {
     constructor(props) {
@@ -37,7 +38,8 @@ class App extends Component {
             country: country,
             category: category,
             pageSize: pageSize,
-            page: 1
+            page: 1,
+            isLoaded: false
         };
 
         this.touchStart = null;
@@ -81,31 +83,35 @@ class App extends Component {
     };
 
     fetchData = async () => {
-        try {
-            let url = this._calculateURL();
+        this.setState({
+            isLoaded: false
+        }, async () => {
+            try {
+                let url = this._calculateURL();
 
-            let res = await fetch(url, {
-                headers: {
-                    Authorization: KEY
-                }
-            });
-
-            if (!res.ok) alert("HTTP-Error: " + res.status);
-
-            let resJson = await res.json();
-
-            if (resJson.status === 'ok') {
-                this.setState({
-                    totalResults: resJson.totalResults,
-                    news: resJson.articles
+                let res = await fetch(url, {
+                    headers: {
+                        Authorization: KEY
+                    }
                 });
-            } else {
-                alert(resJson.message);
-            }
-        } catch (err) {
-            alert(err);
-        }
 
+                if (!res.ok) alert("HTTP-Error: " + res.status);
+
+                let resJson = await res.json();
+
+                if (resJson.status === 'ok') {
+                    this.setState({
+                        totalResults: resJson.totalResults,
+                        news: resJson.articles,
+                        isLoaded: true
+                    });
+                } else {
+                    alert(resJson.message);
+                }
+            } catch (err) {
+                alert(err);
+            }
+        });
     };
 
     handleInputChange = ({target: {value}}) => {
@@ -188,64 +194,61 @@ class App extends Component {
     };
 
     render() {
-        const {searchQuery, totalResults, news, country, category, pageSize, page} = this.state;
+        const {searchQuery, totalResults, news, country, category, pageSize, page, isLoaded} = this.state;
+
+        let changingContent;
+        if (!isLoaded) {
+            changingContent = <Preloader/>;
+        } else {
+            changingContent =
+                <>
+                <NewsList className="col-12"
+                          news={news}/>
+
+                <PageSize className="col-12"
+                          selectedPageSize={pageSize}
+                          handleSelectChange={this.handleSelectChange}/>
+
+
+                <PaginationForm className="col-12"
+                                handleSelectChange={this.handleSelectChange}
+                                selectedPageSize={pageSize}
+                                handlePageChange={this.handlePageChange}
+                                page={page}
+                                lastPage={calculateLastPage(totalResults, pageSize)}/>
+
+                <Footer className="col-12"/>
+                </>;
+        }
+
         return (
             <div className="container"
                  onTouchStart={this.onTouchStart}
                  onTouchEnd={this.onTouchEnd}>
-                <Row>
-                    <Title header="News"
-                           className="col-12"/>
-                </Row>
 
-                <Row>
-                    <PageSize className="col-12"
-                              selectedPageSize={pageSize}
-                              handleSelectChange={this.handleSelectChange}/>
-                </Row>
+                <Title header="News"
+                       className="col-12"/>
 
-                <Row>
-                    <PaginationForm className="col-12"
-                                    handleSelectChange={this.handleSelectChange}
-                                    selectedPageSize={pageSize}
-                                    handlePageChange={this.handlePageChange}
-                                    page={page}
-                                    lastPage={calculateLastPage(totalResults, pageSize)}/>
-                </Row>
+                <PageSize className="col-12"
+                          selectedPageSize={pageSize}
+                          handleSelectChange={this.handleSelectChange}/>
 
-                <Row>
-                    <SelectForm className="col-12 col-lg-4 col-xl-3"
+                <PaginationForm className="col-12"
                                 handleSelectChange={this.handleSelectChange}
-                                selectedCountry={country}
-                                selectedCategory={category}/>
+                                selectedPageSize={pageSize}
+                                handlePageChange={this.handlePageChange}
+                                page={page}
+                                lastPage={calculateLastPage(totalResults, pageSize)}/>
 
-                    <SearchForm className="col-12 col-lg-8 col-xl-9"
-                                value={searchQuery}
-                                handleInputChange={this.handleInputChange}
-                                handleSearchBtnClick={this.handleSearchBtnClick}/>
-                </Row>
+                <Form selectedCountry={country}
+                      selectedCategory={category}
+                      handleSelectChange={this.handleSelectChange}
 
-                <NewsList className="row"
-                          news={news}/>
+                      value={searchQuery}
+                      handleInputChange={this.handleInputChange}
+                      handleSearchBtnClick={this.handleSearchBtnClick}/>
 
-                <Row>
-                    <PageSize className="col-12"
-                              selectedPageSize={pageSize}
-                              handleSelectChange={this.handleSelectChange}/>
-                </Row>
-
-                <Row>
-                    <PaginationForm className="col-12"
-                                    handleSelectChange={this.handleSelectChange}
-                                    selectedPageSize={pageSize}
-                                    handlePageChange={this.handlePageChange}
-                                    page={page}
-                                    lastPage={calculateLastPage(totalResults, pageSize)}/>
-                </Row>
-
-                <Row>
-                    <i className="footer col-12">© nikita2090, 2019</i>
-                </Row>
+                {changingContent}
             </div>
         )
     }

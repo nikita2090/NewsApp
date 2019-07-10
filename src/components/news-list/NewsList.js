@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './NewsList.css';
+
 import NewsItem from '../news-item/NewsItem';
 
 
 const NewsList = ({news, className}) => (
-    <main className={className}>
+    <main className='row'>
         {news.map( article => (
             <NewsItem article={article}
-                      className="col-12"
+                      className={className}
                       key={article.title}/>
         ))}
     </main>

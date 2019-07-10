@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import './PageSize.css';
+
 import Select from "../select/Select";
+import Row from "../row/Row";
+
 import pageSizes from '../../sources/pageSizes';
 
 
@@ -14,6 +17,7 @@ const PageSize = ({selectedPageSize, handleSelectChange, className}) => {
     );
 
     return(
+        <Row>
             <div className={classes}>
                 <span>News per page: </span>
                 <Select name='pageSize'
@@ -22,6 +26,7 @@ const PageSize = ({selectedPageSize, handleSelectChange, className}) => {
                         selected={selectedPageSize}
                         handleSelectChange={handleSelectChange}/>
             </div>
+        </Row>
     );
 };
 
