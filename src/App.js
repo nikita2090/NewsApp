@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 
-import Title from './components/title/Title';
+import Header from './components/header/Header';
 import PageSize from './components/page-size/PageSize';
 import PaginationForm from "./components/pagination-form/PaginationForm";
 import Form from "./components/form/Form";
@@ -226,12 +226,9 @@ class App extends Component {
                  onTouchStart={this.onTouchStart}
                  onTouchEnd={this.onTouchEnd}>
 
-                <Title header="News"
-                       className="col-12"/>
-
-                <PageSize className="col-12"
-                          selectedPageSize={pageSize}
-                          handleSelectChange={this.handleSelectChange}/>
+                <Header title="News"
+                        selectedPageSize={pageSize}
+                        handleSelectChange={this.handleSelectChange}/>
 
                 <PaginationForm className="col-12"
                                 handleSelectChange={this.handleSelectChange}

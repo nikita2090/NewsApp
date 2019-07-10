@@ -1,15 +1,20 @@
 import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import './Select.css';
 
 
-const Select = ({arr, handleSelectChange, name, selected, style}) => {
+const Select = ({arr, handleSelectChange, name, selected, className}) => {
+    const classes = classNames(
+        className,
+        'select'
+    );
+
     return (
-        <select className="select"
+        <select className={classes}
                 onChange={handleSelectChange}
                 name={name}
-                style={style}
                 value={selected}>
             {arr.map(({value, label}) => (
                 <option key={value + label} value={value}>

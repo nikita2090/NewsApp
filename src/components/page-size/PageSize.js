@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import './PageSize.css';
 
 import Select from "../select/Select";
-import Row from "../row/Row";
 
 import pageSizes from '../../sources/pageSizes';
 
@@ -17,16 +16,14 @@ const PageSize = ({selectedPageSize, handleSelectChange, className}) => {
     );
 
     return(
-        <Row>
-            <div className={classes}>
-                <span>News per page: </span>
-                <Select name='pageSize'
-                        style={{width: '50px'}}
-                        arr={pageSizes}
-                        selected={selectedPageSize}
-                        handleSelectChange={handleSelectChange}/>
-            </div>
-        </Row>
+        <div className={classes}>
+            <div>News per page:</div>
+            <Select name='pageSize'
+                    className="pageSizes"
+                    arr={pageSizes}
+                    selected={selectedPageSize}
+                    handleSelectChange={handleSelectChange}/>
+        </div>
     );
 };
 

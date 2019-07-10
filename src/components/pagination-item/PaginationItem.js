@@ -22,11 +22,15 @@ const PaginationItem = ({pageNumber, page, handlePageChange}) =>{
 
 
 PaginationItem.propTypes = {
-    lastPage: PropTypes.number
+    pageNumber: PropTypes.number,
+    page: PropTypes.number,
+    handlePageChange: PropTypes.func,
 };
 
 PaginationItem.defaultProps = {
-    lastPage: 1
+    pageNumber: 1,
+    page: 1,
+    handlePageChange: () => {},
 };
 
 export default PaginationItem;

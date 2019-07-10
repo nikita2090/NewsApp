@@ -51,8 +51,7 @@ PaginationForm.propTypes = {
 
 PaginationForm.defaultProps = {
     className: '',
-    handlePageChange: () => {
-    },
+    handlePageChange: () => {},
     page: 1,
     lastPage: 1,
 };

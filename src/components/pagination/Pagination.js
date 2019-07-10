@@ -29,11 +29,17 @@ const Pagination = ({page, lastPage, handlePageChange, className}) => {
 
 
 Pagination.propTypes = {
-    lastPage: PropTypes.number
+    page: PropTypes.number,
+    lastPage: PropTypes.number,
+    handlePageChange: PropTypes.func,
+    className: PropTypes.string
 };
 
 Pagination.defaultProps = {
-    lastPage: 1
+    page: 1,
+    lastPage: 1,
+    handlePageChange: () => {},
+    className: ''
 };
 
 export default Pagination;

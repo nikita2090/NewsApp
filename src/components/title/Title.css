@@ -1,20 +1,38 @@
-.appTitlesWrap{
-    text-align: center;
-    margin-top: 24px;
+@media screen and (min-width: 300px) {
+    .appTitlesWrap{
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .appTitle{
+        font-size: 30px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .appSubtitle{
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    .appSubtitle a{
+        text-decoration: none;
+        color: dodgerblue;
+    }
 }
 
-.appTitle{
-    font-size: 50px;
-    margin-bottom: 0;
-    margin-top: 0;
+@media screen and (min-width: 768px){
+    .appTitlesWrap{
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .appTitle{
+        font-size: 50px;
+    }
+
+    .appSubtitle{
+        font-size: 14px;
+    }
 }
 
-.appSubtitle{
-    font-size: 14px;
-    margin-top: 0;
-}
-
-.appSubtitle a{
-    text-decoration: none;
-    color: dodgerblue;
-}
