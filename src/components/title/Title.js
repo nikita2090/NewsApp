@@ -12,12 +12,11 @@ const Title = ({header, className}) => {
     );
 
     return(
-        <header className={classes}>
+        <div className={classes}>
             <h1 className="appTitle">{header}</h1>
             <h2 className="appSubtitle">Powered by <a href="https://newsapi.org">News API</a></h2>
-        </header>
+        </div>
     )
-
 };
 
 

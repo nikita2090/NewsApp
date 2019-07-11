@@ -4,8 +4,6 @@ import classNames from 'classnames';
 
 import './Footer.css';
 
-import Row from '../row/Row';
-
 
 const Footer = ({className}) => {
     const classes = classNames(
@@ -13,9 +11,9 @@ const Footer = ({className}) => {
         className
     );
     return(
-        <Row>
+        <footer className="row">
             <i className={classes}>© nikita2090, 2019</i>
-        </Row>
+        </footer>
     )
 };
 
