@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-//import logo from './logo.svg';
 import './App.css';
 
 import Header from './components/header/Header';
-import PageSize from './components/page-size/PageSize';
 import PaginationForm from "./components/pagination-form/PaginationForm";
 import Form from "./components/form/Form";
 import Preloader from "./components/preloader/Preloader";
@@ -23,10 +21,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        let country = 'us';
-        let category = 'general';
-        let pageSize = 10;
-
+        let country, category, pageSize;
         if (localStorage.options) {
             ({country, category, pageSize} = this._loadUserOptions());
         }
@@ -35,9 +30,9 @@ class App extends Component {
             searchQuery: '',
             totalResults: 0,
             news: [],
-            country: country,
-            category: category,
-            pageSize: pageSize,
+            country: country || 'us' ,
+            category: category || 'general',
+            pageSize: pageSize || 10,
             page: 1,
             isLoaded: false
         };
@@ -204,11 +199,6 @@ class App extends Component {
                 <>
                 <NewsList className="col-12"
                           news={news}/>
-
-                <PageSize className="col-12"
-                          selectedPageSize={pageSize}
-                          handleSelectChange={this.handleSelectChange}/>
-
 
                 <PaginationForm className="col-12"
                                 handleSelectChange={this.handleSelectChange}
