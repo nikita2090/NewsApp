@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './NewsList.css';
-
 import NewsItem from '../news-item/NewsItem';
 
 

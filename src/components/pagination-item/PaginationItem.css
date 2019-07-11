@@ -2,12 +2,13 @@
     .paginationItem {
         width: 30px;
         height: 30px;
-        border-radius: 14px;
         border: none;
+        margin: 0 1px;
+
+        border-radius: 14px;
         outline: none;
         background: transparent;
         transition: all .4s;
-        margin: 0 1px;
     }
 
     .paginationItem:hover {

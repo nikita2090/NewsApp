@@ -82,7 +82,7 @@ class App extends Component {
         return url;
     };
 
-    fetchData = async () => {
+    fetchData = () => {
         this.setState({
             isLoaded: false
         }, async () => {
@@ -222,7 +222,7 @@ class App extends Component {
         }
 
         return (
-            <div className="container"
+            <div className="container app"
                  onTouchStart={this.onTouchStart}
                  onTouchEnd={this.onTouchEnd}>
 

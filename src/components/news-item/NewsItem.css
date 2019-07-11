@@ -4,13 +4,15 @@
     }
 
     .articleTitle {
+        margin-left: 0;
+
         font-size: 20px;
         text-decoration: underline;
-        margin-left: 0;
     }
 
     .articleContent {
         display: flex;
+
         margin-top: 10px;
         margin-left: 0;
     }

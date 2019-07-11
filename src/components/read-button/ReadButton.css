@@ -5,8 +5,8 @@
         text-align: center;
         text-decoration: none;
         padding: 6px 10px 6px 10px;
-
         margin-bottom: 15px;
+
         font-size: 16px;
         color: white;
         background-color: dodgerblue;
@@ -19,7 +19,6 @@
         background-color: deepskyblue;
     }
 }
-
 
 @media screen and (min-width: 768px) {
     .readButton {

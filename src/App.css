@@ -1,4 +1,3 @@
-.wrapper {
-    width: 900px;
-    margin:0 auto;
+.app {
+    transition: all .4s;
 }

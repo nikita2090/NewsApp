@@ -1,37 +1,40 @@
 @media screen and (min-width: 300px) {
-    .appTitlesWrap{
+    .appTitlesWrap {
         text-align: center;
         margin-top: 10px;
+
+        transition: all .4s;
     }
 
-    .appTitle{
-        font-size: 30px;
+    .appTitle {
+        margin-top: 0;
         margin-bottom: 0;
-        margin-top: 0;
+
+        font-size: 30px;
     }
 
-    .appSubtitle{
+    .appSubtitle {
+        margin-top: 0;
         font-size: 12px;
-        margin-top: 0;
     }
 
-    .appSubtitle a{
+    .appSubtitle a {
         text-decoration: none;
         color: dodgerblue;
     }
 }
 
-@media screen and (min-width: 768px){
-    .appTitlesWrap{
-        text-align: center;
+@media screen and (min-width: 768px) {
+    .appTitlesWrap {
         margin-top: 24px;
+        text-align: center;
     }
 
-    .appTitle{
+    .appTitle {
         font-size: 50px;
     }
 
-    .appSubtitle{
+    .appSubtitle {
         font-size: 14px;
     }
 }

@@ -15,12 +15,14 @@
 
     .searchInput {
         flex: 1 85%;
+
         height: 26px;
         font-size: 18px;
     }
 
     .searchButton {
         flex: 1 15%;
+
         background-color: dodgerblue;
         color: white;
         border: none;
