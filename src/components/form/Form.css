@@ -1,43 +1,4 @@
-@media screen and (min-width: 300px) {
-    .selectForm {
-        margin-bottom: 15px;
-    }
-
-    .legend {
-        font-size: 18px;
-        text-decoration: underline dodgerblue;
-    }
-
-    .searchForm {
-        display: flex;
-        justify-content: center;
-    }
-
-    .searchInput {
-        flex: 1 85%;
-
-        height: 26px;
-        font-size: 18px;
-    }
-
-    .searchButton {
-        flex: 1 15%;
-
-        background-color: dodgerblue;
-        color: white;
-        border: none;
-        transition: background-color .3s;
-    }
-
-    .searchButton:hover {
-        background-color: deepskyblue;
-    }
-}
-
-
-@media screen and (min-width: 992px) {
-    .selectForm {
-        padding-right: 0;
-        margin-bottom: 0;
-    }
+.legend {
+    font-size: 18px;
+    text-decoration: underline dodgerblue;
 }

@@ -30,7 +30,7 @@ class App extends Component {
             searchQuery: '',
             totalResults: 0,
             news: [],
-            country: country || 'us' ,
+            country: country || 'us',
             category: category || 'general',
             pageSize: pageSize || 10,
             page: 1,
@@ -137,6 +137,9 @@ class App extends Component {
 
     handleSearchBtnClick = (e) => {
         e.preventDefault();
+        const {searchQuery} = this.state;
+        if (searchQuery === '') return;
+
         this.setState({
             page: 1
         }, this.fetchData);
@@ -146,11 +149,12 @@ class App extends Component {
     handlePageChange = (e) => {
         e.preventDefault();
         const name = e.target.name;
+        const {page} = this.state;
 
         if (!isNaN(name)) {
+            if (page === +name) return;
             this.updatePage(+name);
         } else {
-            const {page} = this.state;
             switch (name) {
                 case 'prev':
                     this.updatePage(page - 1);

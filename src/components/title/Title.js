@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -10,6 +10,8 @@ const Title = ({header, className}) => {
         'appTitlesWrap',
         className
     );
+
+    console.log('header');
 
     return(
         <div className={classes}>
@@ -30,4 +32,4 @@ Title.defaultProps = {
     className: ''
 };
 
-export default Title;
+export default memo(Title);

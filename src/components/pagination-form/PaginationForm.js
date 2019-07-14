@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -56,4 +56,4 @@ PaginationForm.defaultProps = {
     lastPage: 1,
 };
 
-export default PaginationForm;
+export default memo(PaginationForm);

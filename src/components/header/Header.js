@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
 import PageSize from "../page-size/PageSize";
@@ -29,4 +29,4 @@ Header.defaultProps = {
     handleSelectChange: () => {}
 };
 
-export default Header;
+export default memo(Header);
