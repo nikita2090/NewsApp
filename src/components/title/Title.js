@@ -11,8 +11,6 @@ const Title = ({header, className}) => {
         className
     );
 
-    console.log('header');
-
     return(
         <div className={classes}>
             <h1 className="appTitle">{header}</h1>

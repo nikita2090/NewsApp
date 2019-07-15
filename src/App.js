@@ -209,7 +209,9 @@ class App extends Component {
                                 selectedPageSize={pageSize}
                                 handlePageChange={this.handlePageChange}
                                 page={page}
-                                lastPage={calculateLastPage(totalResults, pageSize)}/>
+                                lastPage={calculateLastPage(totalResults, pageSize)}
+                                totalResults={totalResults}
+                />
 
                 <Footer className="col-12"/>
                 </>;
@@ -229,7 +231,8 @@ class App extends Component {
                                 selectedPageSize={pageSize}
                                 handlePageChange={this.handlePageChange}
                                 page={page}
-                                lastPage={calculateLastPage(totalResults, pageSize)}/>
+                                lastPage={calculateLastPage(totalResults, pageSize)}
+                                totalResults={totalResults}/>
 
                 <Form selectedCountry={country}
                       selectedCategory={category}

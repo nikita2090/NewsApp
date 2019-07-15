@@ -17,31 +17,6 @@ const Form = ({selectedCountry, selectedCategory, handleSelectChange,
         <SearchForm value={value}
                     handleInputChange={handleInputChange}
                     handleSearchBtnClick={handleSearchBtnClick}/>
-        {/*<fieldset className='selectForm col-12 col-lg-4 col-xl-3'>
-            <legend className="legend">Search in HOT news:</legend>
-            <Select name='country'
-                    arr={countries}
-                    selected={selectedCountry}
-                    handleSelectChange={handleSelectChange}/>
-
-            <Select name='category'
-                    arr={categories}
-                    selected={selectedCategory}
-                    handleSelectChange={handleSelectChange}/>
-        </fieldset>
-
-        <fieldset className='col-12 col-lg-8 col-xl-9'>
-            <legend className="legend">Search in ALL news:</legend>
-            <div className="searchForm">
-                <input className="searchInput"
-                       placeholder="Search..."
-                       value={value}
-                       onChange={handleInputChange}/>
-                <button className="searchButton"
-                        onClick={handleSearchBtnClick}>OK
-                </button>
-            </div>
-        </fieldset>*/}
     </form>
 );
 

@@ -8,7 +8,7 @@ import Row from "../row/Row";
 import Pagination from "../pagination/Pagination";
 
 
-const PaginationForm = ({handlePageChange, page, lastPage, className}) => {
+const PaginationForm = ({handlePageChange, page, lastPage, totalResults, className}) => {
     const classes = classNames(
         'paginationForm',
         'row',
@@ -21,7 +21,7 @@ const PaginationForm = ({handlePageChange, page, lastPage, className}) => {
                 <button name="prev"
                         className="arrowBtn col-1"
                         onClick={handlePageChange}
-                        disabled={page === 1}>
+                        disabled={totalResults === 0 || page === 1}>
                     {'<'}
                 </button>
 
@@ -33,7 +33,7 @@ const PaginationForm = ({handlePageChange, page, lastPage, className}) => {
                 <button name="next"
                         className="arrowBtn col-1"
                         onClick={handlePageChange}
-                        disabled={page === lastPage}>
+                        disabled={totalResults === 0 || page === lastPage}>
                     {'>'}
                 </button>
             </form>
