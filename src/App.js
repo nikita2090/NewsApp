@@ -7,6 +7,7 @@ import Form from "./components/form/Form";
 import Preloader from "./components/preloader/Preloader";
 import NewsList from './components/news-list/NewsList';
 import Footer from './components/footer/Footer';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 
 import calculateLastPage from './functions/calculateLastPage';
 
@@ -218,32 +219,34 @@ class App extends Component {
         }
 
         return (
-            <div className="container app"
-                 onTouchStart={this.onTouchStart}
-                 onTouchEnd={this.onTouchEnd}>
+            <ErrorBoundary>
+                <div className="container app"
+                     onTouchStart={this.onTouchStart}
+                     onTouchEnd={this.onTouchEnd}>
 
-                <Header title="News"
-                        selectedPageSize={pageSize}
-                        handleSelectChange={this.handleSelectChange}/>
+                    <Header title="News"
+                            selectedPageSize={pageSize}
+                            handleSelectChange={this.handleSelectChange}/>
 
-                <PaginationForm className="col-12"
-                                handleSelectChange={this.handleSelectChange}
-                                selectedPageSize={pageSize}
-                                handlePageChange={this.handlePageChange}
-                                page={page}
-                                lastPage={calculateLastPage(totalResults, pageSize)}
-                                totalResults={totalResults}/>
+                    <PaginationForm className="col-12"
+                                    handleSelectChange={this.handleSelectChange}
+                                    selectedPageSize={pageSize}
+                                    handlePageChange={this.handlePageChange}
+                                    page={page}
+                                    lastPage={calculateLastPage(totalResults, pageSize)}
+                                    totalResults={totalResults}/>
 
-                <Form selectedCountry={country}
-                      selectedCategory={category}
-                      handleSelectChange={this.handleSelectChange}
+                    <Form selectedCountry={country}
+                          selectedCategory={category}
+                          handleSelectChange={this.handleSelectChange}
 
-                      value={searchQuery}
-                      handleInputChange={this.handleInputChange}
-                      handleSearchBtnClick={this.handleSearchBtnClick}/>
+                          value={searchQuery}
+                          handleInputChange={this.handleInputChange}
+                          handleSearchBtnClick={this.handleSearchBtnClick}/>
 
-                {changingContent}
-            </div>
+                    {changingContent}
+                </div>
+            </ErrorBoundary>
         )
     }
 }
