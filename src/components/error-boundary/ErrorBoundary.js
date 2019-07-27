@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
-
-import './ErrorBoundary.css';
+import styled from 'styled-components';
 
 import Title from '../title/Title';
+
+
+const Warning = styled.div`
+    margin: 30px 0;
+
+    text-align: center;
+    color: darkred;
+`;
 
 
 class ErrorBoundary extends Component{
@@ -23,10 +30,10 @@ class ErrorBoundary extends Component{
             content =
                 <>
                     <Title header="News"/>
-                    <div className="errBoundary">
+                    <Warning>
                         <h2>Something went wrong</h2>
                         <p>Please refresh the page</p>
-                    </div>
+                    </Warning>
                 </>
         } else {
             content = children;

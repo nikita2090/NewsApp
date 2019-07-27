@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import styled from 'styled-components';
+/*import classNames from 'classnames';*/
 
-import './Footer.css';
+
+const StyledI = styled.i`
+    text-align: center;
+`;
 
 
 const Footer = ({className}) => {
-    const classes = classNames(
+    /*const classes = classNames(
         'footer',
         className
-    );
-    return(
+    );*/
+    return (
         <footer className="row">
-            <i className={classes}>© nikita2090, 2019</i>
+            <StyledI className={className}>© nikita2090, 2019</StyledI>
         </footer>
     )
 };

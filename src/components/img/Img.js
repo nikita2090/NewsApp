@@ -1,22 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import styled from 'styled-components';
 
-import './Img.css';
+
+const StyledImgWrap = styled.div`
+    padding-left: 0;
+    line-height: 0;
+    font-size:0;
+    
+    & img {
+        vertical-align: bottom;
+    }
+`;
 
 
 const Img = ({urlToImage, className}) => {
-    const classes = classNames(
-        className,
-        'imgWrapper'
-    );
-
     return (
-        <div className={classes}>
+        <StyledImgWrap className={className}>
             <img src={urlToImage ? urlToImage : './News.png'}
                  width='100%'
                  alt=""/>
-        </div>
+        </StyledImgWrap>
     )
 };
 

@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import './DateComp.css';
+import formatDate from '../../functions/formatDate';
 
-import  formatDate from '../../functions/formatDate';
+
+const StyledDateComp = styled.span`
+    margin-right: 20px;
+
+    font-size: 15px;
+    font-style: italic;
+`;
 
 
 const DateComp = ({date}) => {
-    return(
-        <span className="date">
+    return (
+        <StyledDateComp>
             {formatDate(date)}
-        </span>
+        </StyledDateComp>
     )
 };
 
@@ -20,7 +27,7 @@ DateComp.propTypes = {
 };
 
 DateComp.defaultProps = {
-   date: ''
+    date: ''
 };
 
 export default DateComp;
