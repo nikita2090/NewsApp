@@ -24,18 +24,18 @@
         height: 26px;
         border: none;
 
-        background-color: dodgerblue;
-        color: white;
+        background-color: var(--main-color);
+        color: var(--font-color-second);
     }
 
     .btn:hover {
-        background-color: deepskyblue;
+        background-color: var(--additional-color);
         outline: none;
     }
 
     .btn:disabled {
-        background-color: lightgrey;
-        color: white;
+        background-color: var(--disabled-color);
+        color: var(--font-color-second);
     }
 }
 

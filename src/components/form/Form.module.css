@@ -1,4 +1,4 @@
 .legends {
     font-size: 18px;
-    text-decoration: underline dodgerblue;
+    text-decoration: underline var(--main-color);
 }

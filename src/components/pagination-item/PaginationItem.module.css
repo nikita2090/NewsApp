@@ -12,7 +12,7 @@
     }
 
     .item:hover {
-        background: deepskyblue;
+        background: var(--additional-color);
     }
 
     .item:focus {
@@ -20,13 +20,13 @@
     }
 
     .itemSelected {
-        background-color: dodgerblue;
-        color: white;
+        background-color: var(--main-color);
+        color: var(--font-color-second);
     }
 
     .itemSelected:hover {
-        background-color: dodgerblue;
-        color: white;
+        background-color: var(--main-color);
+        color: var(--font-color-second);
     }
 }
 

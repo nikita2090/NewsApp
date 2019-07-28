@@ -20,7 +20,7 @@
 
     .subtitle a {
         text-decoration: none;
-        color: dodgerblue;
+        color: var(--main-color);
     }
 }
 

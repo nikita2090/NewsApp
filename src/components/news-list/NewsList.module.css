@@ -3,5 +3,5 @@
 
     font-size: 30px;
     text-align: center;
-    color: darkred;
+    color: var(--error-color);
 }

@@ -1,0 +1,10 @@
+:root {
+    /*colors*/
+    --main-color: dodgerblue;
+    --additional-color: deepskyblue;
+    --disabled-color: lightgrey;
+    --error-color: darkred;
+
+    --font-color-main: black;
+    --font-color-second: white;
+}
