@@ -2,6 +2,10 @@
     .form {
         margin-bottom: 15px;
     }
+
+    .legend {
+        composes: legends from '../form/Form.module.css';
+    }
 }
 
 

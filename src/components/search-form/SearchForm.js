@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from './SearchForm.module.css';
 
-const {form, input, button} = styles;
+const {legend, form, input, button} = styles;
 
 const SearchForm = ({value, handleInputChange, handleSearchBtnClick}) => (
     <fieldset className='col-12 col-lg-8 col-xl-9'>
-        <legend className="legend">Search in ALL news:</legend>
+        <legend className={legend}>Search in ALL news:</legend>
         <div className={form}>
             <input className={input}
                    placeholder="Search..."

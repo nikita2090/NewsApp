@@ -1,8 +1,6 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
-import './Form.css';
-
 import SelectForm from "../select-form/SelectForm";
 import SearchForm from "../search-form/SearchForm";
 

@@ -23,4 +23,8 @@
     background-color: deepskyblue;
 }
 
+.legend {
+    composes: legends from '../form/Form.module.css';
+}
+
 

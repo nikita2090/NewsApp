@@ -11,10 +11,11 @@ import categories from '../../sources/categories';
 
 
 const SelectForm = ({selectedCountry, selectedCategory, handleSelectChange}) => {
-    const classes = classNames(styles.form, 'col-12 col-lg-4 col-xl-3');
+    const {legend, form} = styles;
+    const classes = classNames(form, 'col-12 col-lg-4 col-xl-3');
     return(
         <fieldset className={classes}>
-            <legend className="legend">Search in HOT news:</legend>
+            <legend className={legend}>Search in HOT news:</legend>
             <Select name='country'
                     arr={countries}
                     selected={selectedCountry}
