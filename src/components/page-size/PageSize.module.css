@@ -1,5 +1,5 @@
 @media screen and (min-width: 300px) {
-    .pageSizesSelectWrapper {
+    .wrap {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -9,17 +9,17 @@
         transition: all .4s;
     }
 
-    .pageSizes {
+    .select {
         width: 50px !important;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .pageSizesSelectWrapper {
+    .wrap {
         flex-direction: row;
     }
 
-    .pageSizes {
+    .select {
         margin-left: 5px;
     }
 }

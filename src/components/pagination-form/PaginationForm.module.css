@@ -1,5 +1,5 @@
 @media screen and (min-width: 300px) {
-    .paginationForm {
+    .form {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -8,18 +8,18 @@
         padding-bottom: 16px;
     }
 
-    .arrowBtn {
+    .btn {
         display: none;
         transition: all .4s;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .paginationForm {
+    .form {
         justify-content: space-between;
     }
 
-    .arrowBtn {
+    .btn {
         display: block;
         height: 26px;
         border: none;
@@ -28,12 +28,12 @@
         color: white;
     }
 
-    .arrowBtn:hover {
+    .btn:hover {
         background-color: deepskyblue;
         outline: none;
     }
 
-    .arrowBtn:disabled {
+    .btn:disabled {
         background-color: lightgrey;
         color: white;
     }

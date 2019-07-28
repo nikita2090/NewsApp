@@ -1,9 +1,9 @@
-.imgWrapper {
+.wrap {
     padding-left: 0;
     line-height: 0;
     font-size:0;
 }
 
-.imgWrapper img {
+.wrap img {
     vertical-align: bottom;
 }

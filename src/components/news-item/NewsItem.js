@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './NewsItem.css';
+import styles from './NewsItem.module.css';
 
 import ReadButton from "../read-button/ReadButton";
 import Img from "../img/Img";
@@ -12,29 +12,33 @@ import Row from "../row/Row";
 
 
 const NewsItem = ({article: {title, description, url, urlToImage, publishedAt, author, source}, className}) => {
-    const classes = classNames(
-        className,
-        'article',
-    );
+    const {article: articleStyle, articleTitle, contentWrapper,
+        articleContent, lowerContent, info} = styles;
 
-    return(
-        <article className={classes}>
+    const articleSt = classNames(className, articleStyle);
+    const headerSt = classNames(articleTitle, 'col-12');
+    const imgSt = 'col-12 col-md-4 col-lg-3';
+    const contentWrapSt = classNames(contentWrapper, 'col-12 col-md-8 col-lg-9');
+
+
+    return (
+        <article className={articleSt}>
             <Row>
-                <header className="articleTitle col-12">
+                <header className={headerSt}>
                     {title}
                 </header>
             </Row>
 
-            <Row className="articleContent">
-                <Img className="col-12 col-md-4 col-lg-3"
+            <Row className={articleContent}>
+                <Img className={imgSt}
                      urlToImage={urlToImage}/>
-                <div className="contentWrapper col-12 col-md-8 col-lg-9">
+                <div className={contentWrapSt}>
                     <div className="description">{description}</div>
-                    <div className="lowerContent">
+                    <div className={lowerContent}>
                         <ReadButton url={url}>
                             read article
                         </ReadButton>
-                        <div className="info">
+                        <div className={info}>
                             <DateComp date={publishedAt}/>
                             <span>|</span>
                             <Author author={author}

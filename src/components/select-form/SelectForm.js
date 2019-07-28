@@ -1,7 +1,8 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import './SelectForm.css';
+import styles from './SelectForm.module.css';
 
 import Select from "../select/Select";
 
@@ -9,20 +10,23 @@ import countries from '../../sources/countries';
 import categories from '../../sources/categories';
 
 
-const SelectForm = ({selectedCountry, selectedCategory, handleSelectChange}) => (
-    <fieldset className='selectForm col-12 col-lg-4 col-xl-3'>
-        <legend className="legend">Search in HOT news:</legend>
-        <Select name='country'
-                arr={countries}
-                selected={selectedCountry}
-                handleSelectChange={handleSelectChange}/>
+const SelectForm = ({selectedCountry, selectedCategory, handleSelectChange}) => {
+    const classes = classNames(styles.form, 'col-12 col-lg-4 col-xl-3');
+    return(
+        <fieldset className={classes}>
+            <legend className="legend">Search in HOT news:</legend>
+            <Select name='country'
+                    arr={countries}
+                    selected={selectedCountry}
+                    handleSelectChange={handleSelectChange}/>
 
-        <Select name='category'
-                arr={categories}
-                selected={selectedCategory}
-                handleSelectChange={handleSelectChange}/>
-    </fieldset>
-);
+            <Select name='category'
+                    arr={categories}
+                    selected={selectedCategory}
+                    handleSelectChange={handleSelectChange}/>
+        </fieldset>
+    )
+};
 
 
 SelectForm.propTypes = {

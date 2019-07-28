@@ -2,24 +2,22 @@ import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './PaginationForm.css';
+import styles from './PaginationForm.module.css';
 
 import Row from "../row/Row";
 import Pagination from "../pagination/Pagination";
 
 
 const PaginationForm = ({handlePageChange, page, lastPage, totalResults, className}) => {
-    const classes = classNames(
-        'paginationForm',
-        'row',
-        className
-    );
+    const {form, btn} = styles;
+    const formSt = classNames(form, 'row', className);
+    const btnsSt = classNames(btn, 'col-1');
 
     return (
         <Row>
-            <form className={classes}>
+            <form className={formSt}>
                 <button name="prev"
-                        className="arrowBtn col-1"
+                        className={btnsSt}
                         onClick={handlePageChange}
                         disabled={totalResults === 0 || page === 1}>
                     {'<'}
@@ -31,7 +29,7 @@ const PaginationForm = ({handlePageChange, page, lastPage, totalResults, classNa
                             lastPage={lastPage}/>
 
                 <button name="next"
-                        className="arrowBtn col-1"
+                        className={btnsSt}
                         onClick={handlePageChange}
                         disabled={totalResults === 0 || page === lastPage}>
                     {'>'}
@@ -51,7 +49,8 @@ PaginationForm.propTypes = {
 
 PaginationForm.defaultProps = {
     className: '',
-    handlePageChange: () => {},
+    handlePageChange: () => {
+    },
     page: 1,
     lastPage: 1,
 };

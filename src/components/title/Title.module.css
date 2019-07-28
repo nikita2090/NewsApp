@@ -1,40 +1,40 @@
 @media screen and (min-width: 300px) {
-    .appTitlesWrap {
+    .wrap {
         text-align: center;
         margin-top: 10px;
 
         transition: all .4s;
     }
 
-    .appTitle {
+    .title {
         margin-top: 0;
         margin-bottom: 0;
 
         font-size: 30px;
     }
 
-    .appSubtitle {
+    .subtitle {
         margin-top: 0;
         font-size: 12px;
     }
 
-    .appSubtitle a {
+    .subtitle a {
         text-decoration: none;
         color: dodgerblue;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .appTitlesWrap {
+    .wrap {
         margin-top: 24px;
         text-align: center;
     }
 
-    .appTitle {
+    .title {
         font-size: 50px;
     }
 
-    .appSubtitle {
+    .subtitle {
         font-size: 14px;
     }
 }

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import './App.css';
+import classNames from 'classnames';
+
+import styles from './App.module.css';
 
 import Header from './components/header/Header';
 import PaginationForm from "./components/pagination-form/PaginationForm";
@@ -195,6 +197,7 @@ class App extends Component {
 
     render() {
         const {searchQuery, totalResults, news, country, category, pageSize, page, isLoaded} = this.state;
+        const appSt = classNames(styles.app, 'container');
 
         let changingContent;
         if (!isLoaded) {
@@ -220,7 +223,7 @@ class App extends Component {
 
         return (
             <ErrorBoundary>
-                <div className="container app"
+                <div className={appSt}
                      onTouchStart={this.onTouchStart}
                      onTouchEnd={this.onTouchEnd}>
 

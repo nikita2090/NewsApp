@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import './ErrorBoundary.css';
+import styles from './ErrorBoundary.module.css';
 
 import Title from '../title/Title';
 
@@ -23,7 +23,7 @@ class ErrorBoundary extends Component{
             content =
                 <>
                     <Title header="News"/>
-                    <div className="errBoundary">
+                    <div className={styles.warning}>
                         <h2>Something went wrong</h2>
                         <p>Please refresh the page</p>
                     </div>

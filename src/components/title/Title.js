@@ -2,19 +2,20 @@ import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Title.css';
+import styles from './Title.module.css';
 
 
 const Title = ({header, className}) => {
+    const {wrap, title, subtitle} = styles;
     const classes = classNames(
-        'appTitlesWrap',
+        wrap,
         className
     );
 
     return(
         <div className={classes}>
-            <h1 className="appTitle">{header}</h1>
-            <h2 className="appSubtitle">Powered by <a href="https://newsapi.org">News API</a></h2>
+            <h1 className={title}>{header}</h1>
+            <h2 className={subtitle}>Powered by <a href="https://newsapi.org">News API</a></h2>
         </div>
     )
 };

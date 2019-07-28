@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './PageSize.css';
+import styles from './PageSize.module.css';
 
 import Select from "../select/Select";
 
@@ -10,16 +10,17 @@ import pageSizes from '../../sources/pageSizes';
 
 
 const PageSize = ({selectedPageSize, handleSelectChange, className}) => {
+    const {wrap, select} = styles;
     const classes = classNames(
-        'pageSizesSelectWrapper',
+        wrap,
         className
     );
 
-    return(
+    return (
         <div className={classes}>
             <div>News per page:</div>
             <Select name='pageSize'
-                    className="pageSizes"
+                    className={select}
                     arr={pageSizes}
                     selected={selectedPageSize}
                     handleSelectChange={handleSelectChange}/>
@@ -36,7 +37,8 @@ PageSize.propTypes = {
 
 PageSize.defaultProps = {
     selectedPageSize: 10,
-    handleSelectChange: () => {},
+    handleSelectChange: () => {
+    },
     className: ''
 };
 

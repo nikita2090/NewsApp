@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Author.css';
+import styles from './Author.module.css';
 
 
 const Author = ({author, source}) => {
@@ -12,7 +12,7 @@ const Author = ({author, source}) => {
         content = content.slice(0, 20) + '...';
     }
     return (
-        <span className="author">
+        <span className={styles.author}>
             {content}
         </span>
     );

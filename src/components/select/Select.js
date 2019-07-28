@@ -2,13 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import './Select.css';
+import styles from './Select.module.css';
 
 
 const Select = ({arr, handleSelectChange, name, selected, className}) => {
     const classes = classNames(
         className,
-        'select'
+        styles.select
     );
 
     return (

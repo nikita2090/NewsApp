@@ -1,5 +1,5 @@
 @media screen and (min-width: 300px) {
-    .readButton {
+    .btn {
         display: inline-block;
         width: 100%;
         text-align: center;
@@ -13,7 +13,7 @@
         transition: background-color .4s;
     }
 
-    .readButton:hover {
+    .btn:hover {
         color: white;
         text-decoration: none;
         background-color: deepskyblue;
@@ -21,7 +21,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .readButton {
+    .btn {
         width: inherit;
         margin: 0;
     }

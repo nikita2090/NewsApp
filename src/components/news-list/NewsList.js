@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import NewsItem from '../news-item/NewsItem';
 
-import './NewsList.css';
+import styles from './NewsList.module.css';
 
 const NewsList = ({news, className}) => {
     let content;
@@ -17,7 +17,7 @@ const NewsList = ({news, className}) => {
                 ))}
             </main>
     } else {
-        content = <div className="notFound">Nothing found</div>
+        content = <div className={styles.notFound}>Nothing found</div>
     }
     return content;
 };

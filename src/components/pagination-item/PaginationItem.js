@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
 
-import './PaginationItem.css';
+import styles from './PaginationItem.module.css';
 
 
-const PaginationItem = ({pageNumber, page, handlePageChange}) =>{
+const PaginationItem = ({pageNumber, page, handlePageChange}) => {
+    const {item, itemSelected} = styles;
     const classes = classNames(
-        'paginationItem',
-        {itemSelected: page === pageNumber}
+        item,
+        {[itemSelected]: page === pageNumber}
     );
 
-    return(
+    return (
         <button name={pageNumber}
                 className={classes}
                 onClick={handlePageChange}>

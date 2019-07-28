@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Img.css';
+import styles from './Img.module.css';
 
 
 const Img = ({urlToImage, className}) => {
     const classes = classNames(
         className,
-        'imgWrapper'
+        styles.wrap
     );
 
     return (

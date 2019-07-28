@@ -1,22 +1,23 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 
-import './SearchForm.css';
+import styles from './SearchForm.module.css';
 
+const {form, input, button} = styles;
 
 const SearchForm = ({value, handleInputChange, handleSearchBtnClick}) => (
-        <fieldset className='col-12 col-lg-8 col-xl-9'>
-            <legend className="legend">Search in ALL news:</legend>
-            <div className="searchForm">
-                <input className="searchInput"
-                       placeholder="Search..."
-                       value={value}
-                       onChange={handleInputChange}/>
-                <button className="searchButton"
-                        onClick={handleSearchBtnClick}>OK
-                </button>
-            </div>
-        </fieldset>
+    <fieldset className='col-12 col-lg-8 col-xl-9'>
+        <legend className="legend">Search in ALL news:</legend>
+        <div className={form}>
+            <input className={input}
+                   placeholder="Search..."
+                   value={value}
+                   onChange={handleInputChange}/>
+            <button className={button}
+                    onClick={handleSearchBtnClick}>OK
+            </button>
+        </div>
+    </fieldset>
 );
 
 
@@ -28,8 +29,8 @@ SearchForm.propTypes = {
 
 SearchForm.defaultProps = {
     value: '',
-    handleInputChange:()=>{},
-    handleBtnClick: ()=>{},
+    handleInputChange: () => {},
+    handleBtnClick: () => {},
 };
 
 export default memo(SearchForm);

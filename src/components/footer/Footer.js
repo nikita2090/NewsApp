@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Footer.css';
+import styles from './Footer.module.css';
 
 
 const Footer = ({className}) => {
     const classes = classNames(
-        'footer',
+        styles.footer,
         className
     );
     return(

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames'
 
-import './Pagination.css';
+import styles from './Pagination.module.css';
 
 import PaginationItem from '../pagination-item/PaginationItem';
 
@@ -10,7 +10,7 @@ import PaginationItem from '../pagination-item/PaginationItem';
 const Pagination = ({page, lastPage, handlePageChange, className}) => {
     const classes = classNames(
         className,
-        'pagination'
+        styles.pagination
     );
 
     let items = Array.from(new Array(lastPage).keys());

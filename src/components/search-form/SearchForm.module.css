@@ -1,17 +1,16 @@
-
-.searchForm {
+.form {
     display: flex;
     justify-content: center;
 }
 
-.searchInput {
+.input {
     flex: 1 85%;
 
     height: 26px;
     font-size: 18px;
 }
 
-.searchButton {
+.button {
     flex: 1 15%;
 
     background-color: dodgerblue;
@@ -20,7 +19,7 @@
     transition: background-color .3s;
 }
 
-.searchButton:hover {
+.button:hover {
     background-color: deepskyblue;
 }
 
