@@ -1,4 +1,5 @@
 .app {
     color: var(--font-color-main);
+    font-size: var(--font-size-main);
     transition: all .4s;
 }
